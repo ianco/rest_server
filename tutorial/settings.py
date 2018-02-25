@@ -139,8 +139,8 @@ STATIC_URL = '/static/'
 # }
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 10,
     # the following setting is for JWT tokens, comment out for DRF tokens
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
     #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
@@ -153,4 +153,4 @@ REST_FRAMEWORK = {
 
 # Enables django-rest-auth to use JWT tokens instead of regular tokens. (comment out for DRF tokens)
 #REST_USE_JWT = True
-#SITE_ID = 1
+SITE_ID = 1

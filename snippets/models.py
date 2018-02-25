@@ -34,6 +34,7 @@ class Snippet(models.Model):
     style = models.CharField(choices=STYLE_CHOICES, default='friendly', max_length=100)
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE)
     highlighted = models.TextField()
+    snip_type = models.CharField(max_length=12, blank=False, default='untyped')
 
     class Meta:
         ordering = ('created',)
