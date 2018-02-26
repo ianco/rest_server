@@ -51,3 +51,11 @@ class Snippet(models.Model):
                                   full=True, **options)
         self.highlighted = highlight(self.code, lexer, formatter)
         super(Snippet, self).save(*args, **kwargs)
+
+class WalletItem(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    wallet_name = models.CharField(max_length=255, blank=False)
+    item_type = models.CharField(max_length=255, blank=False)
+    item_id = models.CharField(max_length=255, blank=False)
+    item_value = models.TextField(blank=False)
+    created_by = models.ForeignKey('auth.User', related_name='wallet_items', on_delete=models.CASCADE)
