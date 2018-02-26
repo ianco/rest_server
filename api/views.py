@@ -68,6 +68,7 @@ class WalletItemViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
 
+
 class WalletItemSearchViewSet(generics.ListAPIView):
     queryset = WalletItem.objects.all()
     serializer_class = WalletItemSerializer
@@ -75,11 +76,13 @@ class WalletItemSearchViewSet(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     # the next line is for JWT tokens, comment out for DRF tokens
     # permission_classes = (permissions.IsAuthenticated,)
-    lookup_url_kwarg = "item_type"
+    lookup_url_kwarg_1 = "wallet_name"
+    lookup_url_kwarg_2 = "item_type"
 
     def get_queryset(self):
-        req_snip_type = self.kwargs.get(self.lookup_url_kwarg)
-        items = WalletItem.objects.filter(item_type=req_snip_type)
+        req_wallet = self.kwargs.get(self.lookup_url_kwarg_1)
+        req_item_type = self.kwargs.get(self.lookup_url_kwarg_2)
+        items = WalletItem.objects.filter(wallet_name=req_wallet,item_type=req_item_type)
         return items
 
 
