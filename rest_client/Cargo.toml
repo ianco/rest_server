@@ -1,0 +1,9 @@
+[package]
+name = "rest_client"
+version = "0.1.0"
+authors = ["Ian Costanzo <ian@anon-solutions.ca>"]
+
+[dependencies]
+reqwest = "0.8.5"
+
+
