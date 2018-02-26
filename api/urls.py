@@ -1,8 +1,8 @@
 from django.conf.urls import url, include
 from rest_framework.urlpatterns import format_suffix_patterns
-# from snippets import views
-from snippets.views import SnippetViewSet, SnippetSearchViewSet, UserViewSet, api_root
-from snippets.views import WalletItemViewSet, WalletItemSearchViewSet
+# from api import views
+from api.views import SnippetViewSet, SnippetSearchViewSet, UserViewSet, api_root
+from api.views import WalletItemViewSet, WalletItemSearchViewSet
 from rest_framework import renderers
 from rest_framework.schemas import get_schema_view
 # the next line is for DRF tokens, comment out for JWT tokens
@@ -53,10 +53,10 @@ user_detail = UserViewSet.as_view({
 
 urlpatterns = format_suffix_patterns([
     url(r'^schema/$', schema_view),
-    url(r'^snippets/$', snippet_list, name='snippet-list'),
-    url(r'^snippets/(?P<pk>[0-9]+)/$', snippet_detail, name='snippet-detail'),
-    url(r'^snippets/(?P<pk>[0-9]+)/highlight/$', snippet_highlight, name='snippet-highlight'),
-    url(r'^snippets/(?P<snip_type>[A-Z,a-z]+)/$', snippet_search, name='snippet-search'),
+    url(r'^api/$', snippet_list, name='snippet-list'),
+    url(r'^api/(?P<pk>[0-9]+)/$', snippet_detail, name='snippet-detail'),
+    url(r'^api/(?P<pk>[0-9]+)/highlight/$', snippet_highlight, name='snippet-highlight'),
+    url(r'^api/(?P<snip_type>[A-Z,a-z]+)/$', snippet_search, name='snippet-search'),
     url(r'^items/$', wallet_item_list, name='walletitem-list'),
     url(r'^items/(?P<pk>[0-9]+)/$', wallet_item_detail, name='walletitem-detail'),
     url(r'^items/(?P<pk>[0-9]+)/highlight/$', wallet_item_highlight, name='walletitem-highlight'),

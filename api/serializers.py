@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from snippets.models import Snippet, WalletItem, LANGUAGE_CHOICES, STYLE_CHOICES
+from api.models import Snippet, WalletItem, LANGUAGE_CHOICES, STYLE_CHOICES
 from django.contrib.auth.models import User
 
 
@@ -29,6 +29,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ('url', 'id', 'username', 'snippets', 'wallet_items')
+        fields = ('url', 'id', 'username', 'api', 'wallet_items')
 
 
