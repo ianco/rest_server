@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Ian Costanzo <ian@anon-solutions.ca>"]
 
 [dependencies]
+hyper = "0.11.9"
 reqwest = "0.8.5"
 
 
