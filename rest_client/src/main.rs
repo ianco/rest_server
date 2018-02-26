@@ -108,4 +108,6 @@ fn main() {
     } else {
         println!("Something else happened. Status: {:?}", res4.status());
     }
+
+    println!("Try to POST a JSON body using a JWT token");
 }

@@ -46,7 +46,7 @@ By default the code uses basic auth using the superuser id and password (see the
 
 There are a bunch of places in the code with comments for "the following is for DRF tokens" ... un-comment all this code.
 
-There are a bunch of places in the code with comments for "the following is for JWS tokens" ... comment out this code!
+There are a bunch of places in the code with comments for "the following is for JWT tokens" ... comment out this code!
 
 Note that the DRF token is created automatically when your user is created, so you need to make sure all the above DRF code is enabled before you run your migrations and create your superuser.
 
@@ -71,10 +71,17 @@ http GET 127.0.0.1:8000/items/ 'Authorization: Token 71bee00fa76f08e5f17ceed783a
 
 Likewise for POST operations, etc.
 
-### Using JWS Tokens
+### Using JWT Tokens
 
-There are a bunch of places in the code with comments for "the following is for JWS tokens" ... un-comment all this code.
+There are a bunch of places in the code with comments for "the following is for JWT tokens" ... un-comment all this code.
 
 There are a bunch of places in the code with comments for "the following is for DRF tokens" ... comment out this code!
 
+* settings.py
+* models.py
+* views.py
+* urls.py
 
+```
+http GET 127.0.0.1:8000/snippets/1/ 'Authorization: JWT <your token>'
+```
