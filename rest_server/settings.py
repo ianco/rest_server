@@ -41,13 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     # the following 5 apps are for JWT tokens, comment out for DRF tokens
-    'rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
+    # 'rest_auth',
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'rest_auth.registration',
     # the following app is for DRT tokens, comment out for JWT tokens
-    # 'rest_framework.authtoken',
+    'rest_framework.authtoken',
     'api.apps.SnippetsConfig',
 ]
 
@@ -133,24 +133,24 @@ STATIC_URL = '/static/'
 
 # Configure the JWTs to expire after 1 hour, and allow users to refresh near-expiration tokens
 # comment out for DRF tokens
-JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),
-    'JWT_ALLOW_REFRESH': True,
-}
+# JWT_AUTH = {
+#     'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),
+#     'JWT_ALLOW_REFRESH': True,
+# }
 
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 10,
     # the following setting is for JWT tokens, comment out for DRF tokens
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ),
-    # the following setting is for DRF tokens, comment out for JWT tokens
     # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework.authentication.TokenAuthentication',
-    # )
+    #     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    # ),
+    # the following setting is for DRF tokens, comment out for JWT tokens
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 # Enables django-rest-auth to use JWT tokens instead of regular tokens. (comment out for DRF tokens)
-REST_USE_JWT = True
+# REST_USE_JWT = True
 SITE_ID = 1

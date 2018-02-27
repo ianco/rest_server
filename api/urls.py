@@ -8,7 +8,7 @@ from rest_framework.schemas import get_schema_view
 # the next line is for DRF tokens, comment out for JWT tokens
 from rest_framework.authtoken import views
 # the next line is for JWT tokens, comment out for DRF tokens
-from rest_framework_jwt.views import refresh_jwt_token
+# from rest_framework_jwt.views import refresh_jwt_token
 
 
 # API endpoints
@@ -64,12 +64,12 @@ urlpatterns = format_suffix_patterns([
     url(r'^users/$', user_list, name='user-list'),
     url(r'^users/(?P<pk>[0-9]+)/$', user_detail, name='user-detail'),
     # the next line is for DRF tokens, comment out for JWT tokens
-    # url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^api-token-auth/', views.obtain_auth_token),
     # the next 5 lines are for JWT tokens, comment out for DRF tokens
-    url(r'^registration/', include('rest_auth.registration.urls')),
-    url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-    url(r'^refresh-token/', refresh_jwt_token),
-    url(r'^', include('rest_auth.urls')),
+    # url(r'^registration/', include('rest_auth.registration.urls')),
+    # url(r'^rest-auth/', include('rest_auth.urls')),
+    # url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    # url(r'^refresh-token/', refresh_jwt_token),
+    # url(r'^', include('rest_auth.urls')),
     url(r'^$', api_root),
 ])
