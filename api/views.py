@@ -30,9 +30,9 @@ class SnippetViewSet(viewsets.ModelViewSet):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
     # the next line is for DRF tokens, comment out for JWT tokens
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
     # the next line is for JWT tokens, comment out for DRF tokens
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
     def highlight(self, request, *args, **kwargs):
@@ -46,9 +46,9 @@ class SnippetSearchViewSet(generics.ListAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
     # the next line is for DRF tokens, comment out for JWT tokens
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     # the next line is for JWT tokens, comment out for DRF tokens
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_url_kwarg = "snip_type"
 
     def get_queryset(self):
@@ -61,9 +61,9 @@ class WalletItemViewSet(viewsets.ModelViewSet):
     queryset = WalletItem.objects.all()
     serializer_class = WalletItemSerializer
     # the next line is for DRF tokens, comment out for JWT tokens
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     # the next line is for JWT tokens, comment out for DRF tokens
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
@@ -73,9 +73,9 @@ class WalletItemSearchViewSet(generics.ListAPIView):
     queryset = WalletItem.objects.all()
     serializer_class = WalletItemSerializer
     # the next line is for DRF tokens, comment out for JWT tokens
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     # the next line is for JWT tokens, comment out for DRF tokens
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
     lookup_url_kwarg_1 = "wallet_name"
     lookup_url_kwarg_2 = "item_type"
 
@@ -90,5 +90,5 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     # the next line is for JWT tokens, comment out for DRF tokens
-    # permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated,)
 

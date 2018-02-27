@@ -83,5 +83,58 @@ There are a bunch of places in the code with comments for "the following is for 
 * urls.py
 
 ```
-http GET 127.0.0.1:8000/snippets/1/ 'Authorization: JWT <your token>'
+$ echo '{"username":"ian2", "password1":"pass1234", "password2":"pass1234"}' | http POST 127.0.0.1:8000/rest-auth/registration/
+...
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6ImlhbjIiLCJleHAiOjE1MTk2OTE0OTQsImVtYWlsIjoiIiwib3JpZ19pYXQiOjE1MTk2ODc4OTR9.bBIgczb4yJwqX0uUX5Pls3fPlyUkkHf3-eDz_RHIl14",
+    "user": {
+        "email": "",
+        "first_name": "",
+        "last_name": "",
+        "pk": 2,
+        "username": "ian2"
+    }
+}
+
+$ echo '{"username":"ian2", "password":"pass1234"}' | http POST 127.0.0.1:8000/rest-auth/login/
+...
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6ImlhbjIiLCJleHAiOjE1MTk3MDI1OTgsImVtYWlsIjoiIiwib3JpZ19pYXQiOjE1MTk2OTg5OTh9.TqLbm6j7FuO6KZnf5gouX8utwnu7DTGuFVq4jiuEato",
+    "user": {
+        "email": "",
+        "first_name": "",
+        "last_name": "",
+        "pk": 2,
+        "username": "ian2"
+    }
+}
+
+$ echo '{"wallet_name":"IanWallet", "item_type":"claim", "item_id":"098", "item_value":"{ashdkajhsdh}"}' | http POST 127.0.0.1:8000/items/ 'Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6ImlhbjIiLCJleHAiOjE1MTk3MDI1OTgsImVtYWlsIjoiIiwib3JpZ19pYXQiOjE1MTk2OTg5OTh9.TqLbm6j7FuO6KZnf5gouX8utwnu7DTGuFVq4jiuEato'
+...
+{
+    "created": "2018-02-27T02:37:05.035804Z",
+    "creator": "ian2",
+    "id": 1,
+    "item_id": "098",
+    "item_type": "claim",
+    "item_value": "{ashdkajhsdh}",
+    "url": "http://127.0.0.1:8000/items/1/",
+    "wallet_name": "IanWallet"
+}
+
+$ http GET 127.0.0.1:8000/items/ 'Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6ImlhbjIiLCJleHAiOjE1MTk3MDI1OTgsImVtYWlsIjoiIiwib3JpZ19pYXQiOjE1MTk2OTg5OTh9.TqLbm6j7FuO6KZnf5gouX8utwnu7DTGuFVq4jiuEato'
+...
+[
+    {
+        "created": "2018-02-27T02:37:05.035804Z",
+        "creator": "ian2",
+        "id": 1,
+        "item_id": "098",
+        "item_type": "claim",
+        "item_value": "{ashdkajhsdh}",
+        "url": "http://127.0.0.1:8000/items/1/",
+        "wallet_name": "IanWallet"
+    }
+]
+
 ```
